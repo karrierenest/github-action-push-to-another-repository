@@ -139,6 +139,9 @@ echo "[+] Copying contents of source repository folder $SOURCE_DIRECTORY to fold
 cp -ra "$SOURCE_DIRECTORY"/. "$CLONE_DIR/$TARGET_DIRECTORY"
 cd "$CLONE_DIR"
 
+rm -rf .git
+mv "$TEMP_DIR/.git" "$CLONE_DIR/.git"
+
 echo "[+] Set directory is safe ($CLONE_DIR)"
 # Related to https://github.com/cpina/github-action-push-to-another-repository/issues/64
 git config --global --add safe.directory "$CLONE_DIR"

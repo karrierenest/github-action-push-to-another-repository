@@ -115,7 +115,7 @@ ls -al
 echo "[+] Listing root Location"
 ls -al /
 
-mv "$TEMP_DIR/.git" "$CLONE_DIR/.git"
+#mv "$TEMP_DIR/.git" "$CLONE_DIR/.git"
 
 echo "[+] List contents of $SOURCE_DIRECTORY"
 ls "$SOURCE_DIRECTORY"

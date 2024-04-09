@@ -138,6 +138,11 @@ fi
 echo "[+] Copying contents of source repository folder $SOURCE_DIRECTORY to folder $TARGET_DIRECTORY in git repo $DESTINATION_REPOSITORY_NAME"
 cp -ra "$SOURCE_DIRECTORY"/. "$CLONE_DIR/$TARGET_DIRECTORY"
 cd "$CLONE_DIR"
+
+echo "[+] Set directory is safe ($CLONE_DIR)"
+# Related to https://github.com/cpina/github-action-push-to-another-repository/issues/64
+git config --global --add safe.directory "$CLONE_DIR"
+
 echo "[+] git status:"
 git status
 
@@ -147,10 +152,6 @@ ls -la
 ORIGIN_COMMIT="https://$GITHUB_SERVER/$GITHUB_REPOSITORY/commit/$GITHUB_SHA"
 COMMIT_MESSAGE="${COMMIT_MESSAGE/ORIGIN_COMMIT/$ORIGIN_COMMIT}"
 COMMIT_MESSAGE="${COMMIT_MESSAGE/\$GITHUB_REF/$GITHUB_REF}"
-
-echo "[+] Set directory is safe ($CLONE_DIR)"
-# Related to https://github.com/cpina/github-action-push-to-another-repository/issues/64
-git config --global --add safe.directory "$CLONE_DIR"
 
 if [ "$CREATE_TARGET_BRANCH_IF_NEEDED" = "true" ]
 then

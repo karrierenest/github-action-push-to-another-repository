@@ -117,7 +117,7 @@ ls -al /
 
 #mv "$TEMP_DIR/.git" "$CLONE_DIR/.git"
 
-echo "[+] List contents of $SOURCE_DIRECTORY"
+echo "[+] List contents of source directory $SOURCE_DIRECTORY"
 ls "$SOURCE_DIRECTORY"
 
 echo "[+] Checking if local $SOURCE_DIRECTORY exist"
@@ -138,6 +138,8 @@ fi
 echo "[+] Copying contents of source repository folder $SOURCE_DIRECTORY to folder $TARGET_DIRECTORY in git repo $DESTINATION_REPOSITORY_NAME"
 cp -ra "$SOURCE_DIRECTORY"/. "$CLONE_DIR/$TARGET_DIRECTORY"
 cd "$CLONE_DIR"
+echo "[+] Clone dir content: "
+ls -laht
 
 rm -rf .git
 mv "$TEMP_DIR/.git" "$CLONE_DIR/.git"
